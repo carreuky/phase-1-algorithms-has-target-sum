@@ -1,22 +1,53 @@
 function hasTargetSum(array, target) {
   // Write your algorithm here
+  let pair=[]
+  for(let i=0; i<array.length; i++){
+    for(let j=i; j<array.length; j++){
+      if(array[i]+array[j]==target){
+        pair.push(array[i]);
+        pair.push(array[j]);
+        return true
+      }
+      else if ((array[j] + array[j])===target || (array[i] + array[i])===target ) {
+        return false
+      }
+      else if ((array.length===1)){
+        return false
+      }
+    }
+  }
+
+  return 
 }
+
 
 /* 
   Write the Big O time complexity of your function here
+  o(n²) for performance and o(1) for space complexity since it 
+  requires double looping and we only really store two values for returning
 */
 
 /* 
   Add your pseudocode here
+  To find two numbers that add to target, for every number i in the array we try to add number j
+   to i and see if that equals target. If it is, return the pair. 
+   The pairs should not be of the same index and of one lenght
 */
+
 
 /*
   Add written explanation of your solution here
-*/
+  A loop will be done to the array twice and return 2 values the loop will be less than the size of the array. When
+  the loop finds two matching numbers that the sum is the target it returns the numbers to an array by pushing the numbers to my array.
+  The loop will check the conditions.
+  */
 
 // You can run `node index.js` to view these console logs
 if (require.main === module) {
   // add your own custom tests in here
+  console.log("Expecting: true");
+  console.log("=>", hasTargetSum([9, 8, 7, 6, 5, 7], 10));
+
   console.log("Expecting: true");
   console.log("=>", hasTargetSum([3, 8, 12, 4, 11, 7], 10));
 
